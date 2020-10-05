@@ -57,13 +57,11 @@ __Example__
 <sub>* `[expression]` is a placeholder</sub>
 
 ### Escape sequences
+
 | Character(s) | Meaning             |
 | ------------ | ------------------- |
-| \b           | Backspace           |
-| \f           | Formfeed Page Break |
 | \n           | Newline             |
 | \r           | Carriage Return     |
 | \t           | Horizontal Tab      |
-| \v           | Vertical Tab        |
 | \\           | Backslash           |
 | \'           | Single Quote        |
