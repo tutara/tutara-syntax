@@ -3,5 +3,6 @@ index.md
 primitives.md
 variables.md
 operators.md
-expression.md
+expressions.md
+statements.md
 functions.md
