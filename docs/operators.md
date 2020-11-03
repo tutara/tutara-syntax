@@ -4,8 +4,8 @@ Operators are split into two categories: arithmetic operators and assignment ope
 
 __EBNF Notation__
 ```ebnf
-arithmetic_operators = "+" | "-" | "*" | "/" | "^" | "%" ;
-assignment_operators = "=" | "+=" | "-=" | "*=" | "/=" | "^=" | "%=" ;
+arithmetic_operator = "+" | "-" | "*" | "/" | "^" | "%" ;
+assignment_operator = "=" | "+=" | "-=" | "*=" | "/=" | "^=" | "%=" ;
 ```
 
 ## Arithmetic operators
