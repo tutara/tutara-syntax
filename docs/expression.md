@@ -1,47 +1,48 @@
 # Expression
 
-To work with mathematics, boolean logic and variables you will use expressions. 
+An expression is a combination of variables, primitives, operators and functions that are evaluated to get their value. The evaluation is done in a specific order.
 
-## Order of operations:
+## Order of operations
 
-Expression have an order of operations in how they are resolved, this also determines what an expressions output may be of said expression.
+The order of operations is used when evaluating an expression to determine which procedure to perform first. This impacts the result of an expression. A simple example is `1 + 2 * 3` versus `(1 + 2) * 3` . Both expressions have a different result because the order of operations prioritizes parentheses.
 
-| N. | Implemented   | Operation token     | Context                                   |
-|----|---------------|---------------------|-------------------------------------------|
-| 1	 | [ ]           | TBD                 | Function call, scope, array/member access |
-| 2	 | [ ]           | TBD                 | unary operators, sizeof and type casts    |
-| 3	 | [x]           | * / %               | Multiplication, division, modulo          |
-| 4	 | [x]           | ^                   | Involution                                |
-| 5	 | [x]           | + -	               | Addition and subtraction                  |
-| 6	 | [ ]           | << >>               | Bitwise shift left and right              |
-| 7	 | [ ]           | < <= > >=	         | Comparisons: less-than and greater-than   |
-| 8	 | [ ]           | == !=               | Comparisons: equal and not equal          |
-| 9	 | [ ]           | &                   | Bitwise AND                               |
-| 10 | [ ]           | TBD                 | Bitwise exclusive OR (XOR)                |
-| 11 | [ ]           | \|                  | Bitwise inclusive (normal) OR             |
-| 12 | [ ]           | &&                  | Logical AND                               |
-| 13 | [ ]           | \|\|                | Logical OR                                |
-| 14 | [ ]           | TBD                 | Conditional expression (ternary)          |
-| 15 | [x]           | = += -= *= /= %= ^= | Assignment operators                      |
-| 16 | [x]           | 1, true, name       | Identifier & Literal  (terms)             |
+| N. | Operation token     | Context                                   |
+|----|---------------------|-------------------------------------------|
+| 1  | ( expression )      | Parentheses                               |
+| 2  | name()              | Function call,                            |
+| 3  | TBD                 | unary operators, sizeof and type casts    |
+| 4  | ^                   | Involution                                |
+| 5  | * / %               | Multiplication, division, modulo          |
+| 6  | + -                 | Addition and subtraction                  |
+| 7  | << >>               | Bitwise shift left and right              |
+| 8  | < <= > >=           | Comparisons: less-than and greater-than   |
+| 9  | == !=               | Comparisons: equal and not equal          |
+| 10 | &                   | Bitwise AND                               |
+| 11 | TBD                 | Bitwise exclusive OR (XOR)                |
+| 12 | \|                  | Bitwise inclusive (normal) OR             |
+| 13 | &&                  | Logical AND                               |
+| 14 | \|\|                | Logical OR                                |
+| 15 | TBD                 | Conditional expression (ternary)          |
+| 16 | = += -= *= /= %= ^= | Assignment operators                      |
+| 17 | 1, true, name       | Identifier & Literal  (terms)             |
 
 <sub>This list is still in concept and will subject to change</sub>  
-<sub>see: [operators](operators.md)</sub>
+<sub>See [operators](operators.md) for details about the operators.</sub>
 
 __EBNF Notation__
 ```ebnf
-expression = 
-  identifier_expression | 
-  literal_expression | 
-  binary_expression | 
-  unary_expression | 
-  grouping_expression | 
+expression =
+  identifier_expression |
+  literal_expression |
+  binary_expression |
+  unary_expression |
+  grouping_expression |
   assignment_expression;
 ```
 
 ## Identifier expression
 
-Identifiers are references to the name of a variable declared inside of a scope. These share a spot in the order of operations with literals under the combined name: terms. An identifier expression cannot exist on its own and is thus always nested within other expressions. 
+Identifiers are references to the name of a variable declared inside of a scope. These share a spot in the order of operations with literals under the combined name "terms". Identifier expressions cannot exist on their own and are always nested within other expressions.
 
 __EBNF Notation__
 ```ebnf
@@ -50,172 +51,155 @@ identifier_expression = name;
 
 __Example__
 ```ttr
-var a = 12
-a = 2
+var foo = 12
+foo = 2
 
-// a is the identifier expression thats nested in a assignment expressions.
+// "foo" is the identifier expression nested in the assignment expression "foo = 2".
 
-val b = a / 7
+val bar = foo / 7
 
-// a and b are both identifier expression that are nested within an expression tree.
+// "foo" and "bar" are both identifier expressions nested within an expression tree.
 ```
 
 ## Literal expression
 
-Like identifiers, literals are expressions based on a single item. In this case a literal value like: 1, true/false or 'string'. These share a spot in the order of operations with identifiers under the combined name: terms. Like identifiers, these cannot exit on their own and are always nested within another expression.
+Literals are expressions based on a single item, similar to identifiers. A literal value is a primitive like: `1`, `true`, `false`, or a `'string'`. Literals share a spot in the order of operations with identifiers under the combined name "terms". Like identifiers, these cannot exist on their own and are always nested within another expression.
 
 __EBNF Notation__
 ```ebnf
 literal_expression = boolean | integer | string;
 ```
-<sub>see: [primitives](primitives.md)</sub>
+<sub>See [primitives](primitives.md) for details about primitives.</sub>
 
 __Example__
 ```ttr
-var a = 12
-a = 2
+var foo = 12
+foo = 2
 
 // 12 and 2 are both literal expressions.
 
-val b = a / 7
+val bar = foo / 7
 
-// 7 is an literal expression.
+// 7 is a literal expression.
 
-var c = true
-c = false
+var baz = true
+baz = false
 
 // true and false are both literal expressions.
 
-var d = 'Niels'
-d = 'Marnix'
+var quux = 'Niels'
+quux = 'Marnix'
 
 // 'Niels' and 'Marnix' are both literal expressions.
 ```
 
-## Binary expression 
+## Binary expression
 
-Used in performing an operation on two expressions. These are used to build the expression tree. The last leaf within the tree will always be a term (identifier or literal). Binary expression are used for mathematical operations, logic operations, assignment expressions and any valid combination between these. Binary expressions follow the [order of operations](#Order-of-opperations).
+Used in performing an operation on two expressions. These are used to build the expression tree. The last leaf within the tree will always be a term (identifier or literal). Binary expressions are used for mathematical operations, logic operations, assignment expressions and any valid combination between these. Binary expressions follow the [order of operations](#order-of-operations).
 
-Since binary expressions contain expressions for the left and right side of the operations it can go to a very deep nesting of expressions. In the example image below there is an example of how the binary expression tree is build.
+Binary expressions consist of a left- and right-side expression. For lines containing multiple operations a binary expression tree is build which can go to a very deep nesting of expressions.
 
 Expression: (a + b) * c + 7
 
-![Expression tree of the expression (a+b)*c+7](https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Exp-tree-ex-11.svg/500px-Exp-tree-ex-11.svg.png)
+<img src="./assets/binary-expression-tree-example.svg" alt="Expression tree of the expression (a + b) * c + 7" width="500" height="500">
 
-<sub>Source: [wikimedia](https://commons.wikimedia.org/wiki/File:Exp-tree-ex-11.svg)</sub>
+<sub>Expression tree - from [Wikimedia](https://commons.wikimedia.org/wiki/File:Exp-tree-ex-11.svg)</sub>
 
-For more information on how expression trees work and are build see the [wikipedia article](https://en.wikipedia.org/wiki/Binary_expression_tree) on binary expression tree's.
+More information about expression trees and their working can be found on the [Wikipedia article](https://en.wikipedia.org/wiki/Binary_expression_tree) on binary expression trees.
 
 __EBNF Notation__
 ```ebnf
-binary_expression = expression, operator, expression;
+binary_expression = expression , operator , expression;
 ```
 
-<sub>see: [operators](operators.md)</sub>
+<sub>See [operators](operators.md) for details on operators.</sub>
 
 __Example__
 ```ttr
-var a
+val foo = 2 * 3
 
-a = 2 * 3 
+// "2 * 3" is a binary expression of 2 terms with a multiply operation.
 
-// 2 * 3 
-// is a binary expression of 2 terms with an multiply operation.
+val bar = foo / 1
 
-var b
+// "foo / 1" is a binary expression of 2 terms with a division operation.
 
-b = a / 1
+val baz = foo * bar + 12 / 2
 
-// a / 1 
-// is a binary expression of 2 terms with an division operation.
-
-val c = a * b + 12 / 2
-
-// a * b + 12 / 2 
-// is a binary expression of two binary expressions. When resolving these it will result as follows
-// binary expression left: a * b (Which is a also binary expressions)
-// operation: Add (+)
-// binary expression right 12 / 2 (Which is a also binary expressions)
-
-// The end result of c = 42
+// "foo * bar + 12 / 2" is a binary expression tree root. Both the left and right side contain another binary expression.
+// The left side is "foo * bar" and the right is "12 / 2". Evaluating this will result in 42.
 ```
 
-## Unary expression  
+## Unary expression
 
-Used for applying a single operator to an expression. For instance: using a minus operator to invert the state of an mathematical expression.
+Used to apply a single operator to an expression like using a minus operator to invert the state of an mathematical expression.
 
 __EBNF Notation__
 ```ebnf
-unary_expression = minus, expression;
+unary_expression = ( minus | plus ) , expression;
 ```
 
 __Example__
 ```ttr
-var a = 12
-a = - 12
+var foo = 12
+foo = -foo
 
-// - 12
-// is a unary expression that inverts the state of literal to a negative number
+// "-foo" is an unary expression that inverts the state of literal to a negative number.
 ```
 
 ## Grouping expression
 
-A grouping is used for telling the interpreter to resolve the grouped expression first. This is used to resolve an nested expression with an higher order of operation before one with an lower one. Using the grouping expression to change the order of operations also changes the outcome. The classic example is [PEMDAS](https://pemdas.info) for basic mathematical expressions.
+A grouping is used for telling the interpreter to resolve the grouped expression before others. This is helpful when resolving a nested expression with an higher order of operation before one with an lower order. Using the grouping expression to change the order of operations also change the outcome. A classic example of this is [PEMDAS](https://pemdas.info) for basic mathematical expressions.
 
 __EBNF Notation__
 ```ebnf
-grouping_expression = "(", expression, ")";
+grouping_expression = "(" , expression , ")";
 ```
 
 __Example__
 ```ttr
 // Using the normal order of operations
-// the 5 * 2 is resolves first and then it will add the 1.
+// "5 * 2" is evaluated before "1 + ".
 
-1 + 5 * 2
+1 + 5 * 2 // = 11
 
-// Results in 11
+// Using the grouping expression
+// "(1 + 5)" is evaluated before "* 2".
 
-// Using the grouping expression we force
-// the interpreter to resolve the 1 + 5 first
-// and multiply with 2 afterwards.
-
-(1 + 5) * 2
-
-// Results in 12
+(1 + 5) * 2 // = 12
 ```
 
 ## Assignment expression
 
-Used for binding a result of an expression to a variable. This can be used in deceleration and as expression. It consists of the name of the variable that will bind the expression result. The type of assignment. For instance: a basic assignment that takes the expression results and assigns it to the variable; addition assignment for adding the result of the expression to the existing value of the variable or division assignment that divides the existing value of the variable with the result of the expression.
+Used for binding a result of an expression to a variable. This can be used in declarations and as an expression. It consists of the name of the variable that will bind the expression result, the type of assignment and a expression to evaluate. The expression is evaluated and assigned to the variable using the given operator type.
 
 __EBNF Notation__
 ```ebnf
-assignment_expression = name, assignment_operator, expression;
+assignment_expression = name , assignment_operator , expression;
 ```
 
 __Example__
 ```ttr
-var a = 1
-a = 2
+var foo = 1
+foo = 2
 
-// a = 2
+// foo = 2
 
-var b = 12
-b += 4
+var bar = 12
+bar += 4
 
-// b = 16
+// bar = 16
 
-var c = 9
-c /= 3
+var baz = 9
+baz /= 3
 
-// c = 3
+// baz = 3
 
-var d = 2
-d ^= 8
+var qux = 2
+qux ^= 8
 
-d = 256
+// qux = 256
 ```
 
-<sub>see: [variables](variables.md)</sub>  
-<sub>see: [operators](operators.md)</sub>
+<sub>See [variables](variables.md) for details about variables.</sub>  
+<sub>See [operators](operators.md) for details about operators.</sub>
