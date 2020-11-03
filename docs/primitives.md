@@ -44,7 +44,7 @@ name = "a".."z" | "A".."Z", { "a".."z" | "A".."Z" | "0".."9" };
 template = "$" , name | ( "{" , expression, "}" );
 string = "'" , { any_character | template | escape } , "'";
 ```
-<sub>`any_character` means all characters of the current character set **except** for backslash, singlequote and dollar sign.
+<sub>`any_character` means all characters of the current character set **except** for backslash, singlequote and dollar sign.</sub>
 
 __Example__
 ```ttr
