@@ -37,7 +37,7 @@ expression =
   binary_expression |
   unary_expression |
   grouping_expression |
-  assignment_expression;
+  assignment_expression ;
 ```
 
 ## Identifier expression
@@ -67,7 +67,7 @@ Literals are expressions based on a single item, similar to identifiers. A liter
 
 __EBNF Notation__
 ```ebnf
-literal_expression = boolean | integer | string;
+literal_expression = boolean | integer | string ;
 ```
 <sub>See [primitives](primitives.md) for details about primitives.</sub>
 
@@ -109,7 +109,7 @@ More information about expression trees and their working can be found on the [W
 
 __EBNF Notation__
 ```ebnf
-binary_expression = expression , operator , expression;
+binary_expression = expression , operator , expression ;
 ```
 
 <sub>See [operators](operators.md) for details on operators.</sub>
@@ -136,7 +136,7 @@ Used to apply a single operator to an expression like using a minus operator to 
 
 __EBNF Notation__
 ```ebnf
-unary_expression = ( minus | plus ) , expression;
+unary_expression = ( minus | plus ) , expression ;
 ```
 
 __Example__
@@ -153,7 +153,7 @@ A grouping is used for telling the interpreter to resolve the grouped expression
 
 __EBNF Notation__
 ```ebnf
-grouping_expression = "(" , expression , ")";
+grouping_expression = "(" , expression , ")" ;
 ```
 
 __Example__
@@ -175,7 +175,7 @@ Used for binding a result of an expression to a variable. This can be used in de
 
 __EBNF Notation__
 ```ebnf
-assignment_expression = name , assignment_operator , expression;
+assignment_expression = name , assignment_operator , expression ;
 ```
 
 __Example__

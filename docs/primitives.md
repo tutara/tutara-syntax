@@ -8,7 +8,7 @@ A boolean can either be `true` or `false`. It is comparable to a yes/no or on/of
 
 __EBNF Notation__
 ```ebnf
-boolean = "true" | "false";
+boolean = "true" | "false" ;
 ```
 
 __Example__
@@ -23,7 +23,7 @@ Integers can be any valid whole number. They can not start with the digit `0`.
 
 __EBNF Notation__
 ```ebnf
-integer = "0" | [ "-" ], "1".."9", { "0".."9" };
+integer = "0" | [ "-" ] , "1".."9" , { "0".."9" } ;
 ```
 
 __Example__
@@ -39,10 +39,10 @@ A string is a sequence of characters. Strings are the basic of any text in the l
 
 __EBNF Notation__
 ```ebnf
-escape = "\\" , "b" | "f" | "n" | "r" | "t" | "v" | "\\" | "'";
-name = "a".."z" | "A".."Z", { "a".."z" | "A".."Z" | "0".."9" };
-template = "$" , name | ( "{" , expression, "}" );
-string = "'" , { any_character | template | escape } , "'";
+escape = "\\" , "b" | "f" | "n" | "r" | "t" | "v" | "\\" | "'" ;
+name = "a".."z" | "A".."Z" , { "a".."z" | "A".."Z" | "0".."9" } ;
+template = "$" , name | ( "{" , expression, "}" ) ;
+string = "'" , { any_character | template | escape } , "'" ;
 ```
 <sub>`any_character` means all characters of the current character set **except** for backslash, singlequote and dollar sign.</sub>
 

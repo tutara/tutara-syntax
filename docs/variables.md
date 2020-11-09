@@ -5,8 +5,8 @@ The type of a variable will normally be inferred from the right hand expression 
 
 __EBNF Notation__
 ```ebnf
-variable = "var" | "val" , ( [ ":", name ] , "=" , expression | ":", name, [ "=" , expression ] );
-name = "a".."z" | "A".."Z", { "a".."z" | "A".."Z" | "0".."9" };
+variable = "var" | "val" , ( [ ":", name ] , "=" , expression | ":", name, [ "=" , expression ] ) ;
+name = "a".."z" | "A".."Z", { "a".."z" | "A".."Z" | "0".."9" } ;
 ```
 
 __Simple Notation__
