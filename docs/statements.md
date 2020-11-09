@@ -14,7 +14,7 @@ statement =
   parameters |
   parameter |
   function |
-  return;
+  return ;
 ```
 
 <sub>See [expression](expressions.md) for details about expressions.</sub>  
@@ -27,7 +27,7 @@ An expression is also a statement as some expressions can be used inline, like t
 
 __EBNF Notation__
 ```ebnf
-expression_statement = expression;
+expression_statement = expression ;
 ```
 
 <sub>See [expression](expressions.md) for details about expressions.</sub>  
@@ -47,7 +47,7 @@ To work with variables you need to declare them first. A declaration exists of t
 
 __EBNF Notation__
 ```ebnf
-declaration = "var" | "val" , ( [ ":" , name ] , expression | ":" , name , expression  );
+declaration = "var" | "val" , ( [ ":" , name ] , expression | ":" , name , expression  ) ;
 ```
 
 __Example__
@@ -66,7 +66,7 @@ Used to specify the type of a function or variable. This is in some cases option
 
 __EBNF Notation__
 ```ebnf
-type_specification = ":" , name;
+type_specification = ":" , name ;
 ```
 
 __Example__
@@ -89,7 +89,7 @@ Comments can be optionally parsed by the parser. This is for future use when com
 
 __EBNF Notation__
 ```ebnf
-comment = comment_token;
+comment = comment_token ;
 ```
 
 __Example__
@@ -103,7 +103,7 @@ A block statement is a collection of statements. This can contain any valid stat
 
 __EBNF Notation__
 ```ebnf
-block = { statement };
+block = { statement } ;
 ```
 
 ## Body
@@ -112,7 +112,7 @@ A body is the same as a block except that a body statements requires the curly b
 
 __EBNF Notation__
 ```ebnf
-block = "{" , { statement } , "}";
+body = "{" , { statement } , "}" ;
 ```
 
 ## Parameters
@@ -121,7 +121,7 @@ Used for passing variables or data to a function. It contains its parenthesis an
 
 __EBNF Notation__
 ```ebnf
-parameters = "(" , { parameter } , ")"
+parameters = "(" , { parameter } , ")" ;
 ```
 
 __Example__
@@ -140,7 +140,7 @@ A parameter is a used inside the [parameters](#parameters) statement to define a
 
 __EBNF Notation__
 ```ebnf
-parameter = name , type_specification , [ "," ];
+parameter = name , type_specification , [ "," ] ;
 ```
 
 __Example__
@@ -170,7 +170,7 @@ First is the fun keyword, after that is an optional [type specification](#Type-S
 
 __EBNF Notation__
 ```ebnf
-function = "fun" , [ type_specification ] , name , [ parameters ] , body;
+function = "fun" , [ type_specification ] , name , [ parameters ] , body ;
 ```
 
 __Example__
@@ -197,7 +197,7 @@ Used for exiting a function or returning a value from a function. It consist of 
 
 __EBNF Notation__
 ```ebnf
-return = "return" , [ expression ];
+return = "return" , [ expression ] ;
 ```
 
 __Example__

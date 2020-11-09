@@ -8,8 +8,8 @@ A function needs a body with the statements that execute when the function is ca
 
 __EBNF Notation__
 ```ebnf
-name = "a".."z" | "A".."Z", { "a".."z" | "A".."Z" | "0".."9" };
-function = "fun", [ ":", name ] , name, [ "(", [ name, ":", name, "," ], { name, ":", name } ")" ], "{" { statement }, "}";
+name = "a".."z" | "A".."Z" , { "a".."z" | "A".."Z" | "0".."9" } ;
+function = "fun" , [ ":", name ] , name , [ "(" , [ name , ":" , name , "," ] , { name , ":" , name } ")" ] , "{" { statement } , "}" ;
 ```
 
 <sub>* `statement` is a placeholder</sub>

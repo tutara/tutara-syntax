@@ -5,7 +5,7 @@ The control flow is a fundamental part of the language allowing the code to bran
 <sub>See [expressions](expressions.md) for details about expressions.</sub>  
 <sub>See [statements](statements.md) for details about statements.</sub>  
 
-# Choice
+## Choice
 
 There are two expressions in the choice group. if- and match-expressions.
 
@@ -21,23 +21,23 @@ The non-parameterized variant does not take a parameter after the match keyword 
 
 __EBNF Notation__
 ```ebnf
-name = "a".."z" | "A".."Z" , { "a".."z" | "A".."Z" | "0".."9" };
+name = "a".."z" | "A".."Z" , { "a".."z" | "A".."Z" | "0".."9" } ;
 
-if = "if" , "(" , expression , ")" , ( "{" , { statement } , "}" | statement );
-else = "else" , ( "{" , { statement } , "}" | statement );
-else-if = "else" , if;
-if-statement = if , { else-if } , [ else ];
+if = "if" , "(" , expression , ")" , ( "{" , { statement } , "}" | statement ) ;
+else = "else" , ( "{" , { statement } , "}" | statement ) ;
+else_if = "else" , if ;
+if_statement = if , { else_if } , [ else ] ;
 
-match-statement-equal = expression;
-match-statement-operator = ( "!" | "==" | ">" | "<" | ">=" | "<=" ) , expression;
-match-statement-range = expresion ".." expression;
-match-statement-set = expression [ { "," expression } ];
-match-statement-function = [ name ] , [ "." ] , name;
-match-expression = match-statement-equal | match-statement-operator | match-statement-range | match-statement-set | match-statement-function;
-match-arg = "match" , "(" , expression , ")" , "{" , { match-expression , "->" , ( "{" , { statement } , "}" | statement ) }  "}";
+match_statement_equal = expression ;
+match_statement_operator = ( "!" | "==" | ">" | "<" | ">=" | "<=" ) , expression ;
+match_statement_range = expresion ".." expression ;
+match_statement_set = expression [ { "," expression } ] ;
+match_statement_function = [ name ] , [ "." ] , name ;
+match_expression = match_statement_equal | match_statement_operator | match_statement_range | match_statement_set | match_statement_function ;
+match_arg = "match" , "(" , expression , ")" , "{" , { match_expression , "->" , ( "{" , { statement } , "}" | statement ) }  "}" ;
 
-match-no-arg = "match" , "{" , { expression , "->" , ( "{" , { statement } , "}" | statement ) }  "}";
-match-statement = match-arg | match-no-arg;
+match_no_arg = "match" , "{" , { expression , "->" , ( "{" , { statement } , "}" | statement ) }  "}" ;
+match_statement = match_arg | match_no_arg ;
 ```
 
 __Example__
@@ -84,14 +84,14 @@ Lastly the for loop can perform a set of statements based on an expressing with 
 
 __EBNF Notation__
 ```ebnf
-name = "a".."z" | "A".."Z" , { "a".."z" | "A".."Z" | "0".."9" };
+name = "a".."z" | "A".."Z" , { "a".."z" | "A".."Z" | "0".."9" } ;
 
 break = "break"
 
-while = "while" , "(" , expression , ")" , "{" { statement } , "}";
-loop = "loop" , "{" { statement } , "}";
+while = "while" , "(" , expression , ")" , "{" { statement } , "}" ;
+loop = "loop" , "{" { statement } , "}" ;
 
-for = "for" , "(" , name , "in" , expression , ")" , "{" { statement } , "}";
+for = "for" , "(" , name , "in" , expression , ")" , "{" { statement } , "}" ;
 ```
 
 __Example__
