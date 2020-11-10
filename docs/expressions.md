@@ -9,22 +9,16 @@ The order of operations is used when evaluating an expression to determine which
 | N. | Operation token     | Context                                   |
 |----|---------------------|-------------------------------------------|
 | 1  | ( expression )      | Parentheses                               |
-| 2  | name()              | Function call,                            |
-| 3  | TBD                 | unary operators, sizeof and type casts    |
+| 2  | name()              | Function call                             |
+| 3  | - + !               | Unary operators                           |
 | 4  | ^                   | Involution                                |
 | 5  | * / %               | Multiplication, division, modulo          |
 | 6  | + -                 | Addition and subtraction                  |
-| 7  | << >>               | Bitwise shift left and right              |
-| 8  | < <= > >=           | Comparisons: less-than and greater-than   |
-| 9  | == !=               | Comparisons: equal and not equal          |
-| 10 | &                   | Bitwise AND                               |
-| 11 | TBD                 | Bitwise exclusive OR (XOR)                |
-| 12 | \|                  | Bitwise inclusive (normal) OR             |
-| 13 | &&                  | Logical AND                               |
-| 14 | \|\|                | Logical OR                                |
-| 15 | TBD                 | Conditional expression (ternary)          |
-| 16 | = += -= *= /= %= ^= | Assignment operators                      |
-| 17 | 1, true, name       | Identifier & Literal  (terms)             |
+| 7  | == != <= >= < >     | Comparisons                               |
+| 8  | &&                  | Logical AND                               |
+| 9  | \|\|                | Logical OR                                |
+| 10 | = += -= *= /= %= ^= | Assignment operators                      |
+| 11 | 1, true, name       | Identifier & Literal  (terms)             |
 
 <sub>This list is still in concept and will subject to change</sub>  
 <sub>See [operators](operators.md) for details about the operators.</sub>
