@@ -15,38 +15,26 @@ All branches accept a body of statements that are evaluated depending on the bra
 
 The match-expression is a syntactic sugar for the if-expression allowing more readable code. It has two variants: parameterized and non-parameterized. 
 
-The parameterized variant takes the expression after the match keyword in parenthesis. The following body accepts a match-rule on the given parameter. This rule starts with an operator and is followed by an expression.
-
-The non-parameterized variant does not take a parameter after the match keyword but takes expressions on the identifier to match on. Each new match must start with said identifier and an matching comparing operator. After that normal expression rules apply.
+The parameterized variant takes the expression after the match keyword in parenthesis. The following body accepts a match-rule on the given parameter. Each rule will perform an equals check with the given expression. The non-parameterized variant does not take a parameter after the match keyword but takes expressions to evaluate. Both match variants accept an default clause when no rules match using the "else" keyword.
 
 __EBNF Notation__
 ```ebnf
 name = "a".."z" | "A".."Z" , { "a".."z" | "A".."Z" | "0".."9" } ;
 
-if = "if" , "(" , expression , ")" , ( "{" , { statement } , "}" | statement ) ;
-else = "else" , ( "{" , { statement } , "}" | statement ) ;
+if = "if" , "(" , expression , ")" , ( "{" , { statement } , "}" | expression ) ;
+else = "else" , ( "{" , { statement } , "}" | expression ) ;
 else_if = "else" , if ;
 if_statement = if , { else_if } , [ else ] ;
 
-match_statement_equal = expression ;
-match_statement_operator = ( "!" | "==" | ">" | "<" | ">=" | "<=" ) , expression ;
-match_statement_range = expresion ".." expression ;
-match_statement_set = expression [ { "," expression } ] ;
-match_statement_function = [ name ] , [ "." ] , name ;
-match_expression = match_statement_equal | match_statement_operator | match_statement_range | match_statement_set | match_statement_function ;
-match_arg = "match" , "(" , expression , ")" , "{" , { match_expression , "->" , ( "{" , { statement } , "}" | statement ) }  "}" ;
-
-match_no_arg = "match" , "{" , { expression , "->" , ( "{" , { statement } , "}" | statement ) }  "}" ;
-match_statement = match_arg | match_no_arg ;
+match = "match" , [ "(" , expression , ")" ] , "{" , { ( expression | "else" ) , "->" , ( "{" , { statement } , "}" | expression ) }  "}" ;
 ```
 
 __Example__
 ```ttr
 // Match with argument
 val result = match (x) {
-  < 10 -> 'x is below 10'
-  == 10 -> 'x is exactly 10'
-  > 10 -> 'x is above 10'
+  10 -> 'x is exactly 10'
+  else -> 'x is not 10'
 }
 
 // Match without argument
@@ -54,6 +42,18 @@ val result = match {
   x < 10 -> 'x is below 10'
   x == 10 -> 'x is exactly 10'
   x > 10 -> 'x is above 10'
+}
+
+match {
+  foo == bar -> {
+    // foo is bar
+  }
+  foo == baz -> {
+    // foo is baz
+  }
+  else -> {
+    // foo is not bar and not baz
+  }
 }
 
 // If without curly braces
