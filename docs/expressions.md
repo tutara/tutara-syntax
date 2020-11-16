@@ -6,19 +6,19 @@ An expression is a combination of variables, primitives, operators and functions
 
 The order of operations is used when evaluating an expression to determine which procedure to perform first. This impacts the result of an expression. A simple example is `1 + 2 * 3` versus `(1 + 2) * 3` . Both expressions have a different result because the order of operations prioritizes parentheses.
 
-| N. | Operation token     | Context                                   |
-|----|---------------------|-------------------------------------------|
-| 1  | ( expression )      | Parentheses                               |
-| 2  | name()              | Function call                             |
-| 3  | - + !               | Unary operators                           |
-| 4  | ^                   | Involution                                |
-| 5  | * / %               | Multiplication, division, modulo          |
-| 6  | + -                 | Addition and subtraction                  |
-| 7  | == != <= >= < >     | Comparisons                               |
-| 8  | &&                  | Logical AND                               |
-| 9  | \|\|                | Logical OR                                |
-| 10 | = += -= *= /= %= ^= | Assignment operators                      |
-| 11 | 1, true, name       | Identifier & Literal  (terms)             |
+| N. | Operation token      | Context                                   |
+|----|----------------------|-------------------------------------------|
+| 1  | ( expression )       | Parentheses                               |
+| 2  | name()               | Function call                             |
+| 3  | - + !                | Unary operators                           |
+| 4  | **                   | Involution                                |
+| 5  | * / %                | Multiplication, division, modulo          |
+| 6  | + -                  | Addition and subtraction                  |
+| 7  | == != <= >= < >      | Comparisons                               |
+| 8  | &&                   | Logical AND                               |
+| 9  | \|\|                 | Logical OR                                |
+| 10 | = += -= *= /= %= **= | Assignment operators                      |
+| 11 | 1, true, name        | Identifier & Literal  (terms)             |
 
 <sub>This list is still in concept and will subject to change</sub>  
 <sub>See [operators](operators.md) for details about the operators.</sub>
@@ -190,7 +190,7 @@ baz /= 3
 // baz = 3
 
 var qux = 2
-qux ^= 8
+qux **= 8
 
 // qux = 256
 ```

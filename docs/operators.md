@@ -4,8 +4,8 @@ Operators are split into two categories: arithmetic operators and assignment ope
 
 __EBNF Notation__
 ```ebnf
-arithmetic_operator = "+" | "-" | "*" | "/" | "^" | "%" ;
-assignment_operator = "=" | "+=" | "-=" | "*=" | "/=" | "^=" | "%=" ;
+arithmetic_operator = "+" | "-" | "*" | "/" | "**" | "%" ;
+assignment_operator = "=" | "+=" | "-=" | "*=" | "/=" | "**=" | "%=" ;
 ```
 
 ## Arithmetic operators
@@ -60,9 +60,9 @@ The pow operator is used for power levy.
 
 __Example__
 ```ttr
-2 ^ 64
-3 ^ 2
-42 ^ 0
+2 ** 64
+3 ** 2
+42 ** 0
 ```
 
 ### Modulo 
@@ -148,10 +148,10 @@ Pow assign can be used to power levy a variable by an value and directly assigni
 __Example__
 ```ttr
 var foo = 2
-foo ^= 8
+foo **= 8
 
 var bar = 50
-bar ^= 1
+bar **= 1
 ```
 
 ## Modulo assign
