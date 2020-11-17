@@ -54,9 +54,9 @@ __Example__
 191 / 0 <- Not allowed 
 ```
 
-### Pow
+### Exponentiation 
 
-The pow operator is used for power levy.
+The exponentiation operator is used for power levy.
 
 __Example__
 ```ttr
@@ -141,9 +141,9 @@ var bar = 22
 bar /= 11
 ```
 
-## Pow assign
+## Exponentiation assign
 
-Pow assign can be used to power levy a variable by an value and directly assigning the new value to itself. 
+Exponentiation assign can be used to power levy a variable by an value and directly assigning the new value to itself. 
 
 __Example__
 ```ttr
