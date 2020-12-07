@@ -4,14 +4,17 @@ Primitives are fundamental types like booleans, integers and strings.
 
 ## Booleans
 
-A boolean can either be `true` or `false`. It is comparable to a yes/no or on/off state.
+A boolean can either be `true` or `false`. It is comparable to a yes/no or
+on/off state.
 
-__EBNF Notation__
+### EBNF Notation
+
 ```ebnf
 boolean = "true" | "false" ;
 ```
 
-__Example__
+### Example
+
 ```ttr
 true
 false
@@ -21,12 +24,14 @@ false
 
 Integers can be any valid whole number. They can not start with the digit `0`.
 
-__EBNF Notation__
+### EBNF Notation
+
 ```ebnf
 integer = "0" | [ "-" ] , "1".."9" , { "0".."9" } ;
 ```
 
-__Example__
+### Example
+
 ```ttr
 0
 -54
@@ -35,18 +40,28 @@ __Example__
 
 ## Strings
 
-A string is a sequence of characters. Strings are the basic of any text in the language. Strings are enclosed between single quotation marks `'`. To use variables inside of string you'll have to use the dollar sign, `$` ,follow by variable castable to string. When using methods or accessing properties on an object the expression must be enclosed between curly brackets `${}`. There are a set of restricted characters in Strings that should be escaped using a `\`, see [Escape-sequences](#Escape-sequences).
+A string is a sequence of characters. Strings are the basic of any text in the
+language. Strings are enclosed between single quotation marks `'`. To use
+variables inside of string you'll have to use the dollar sign, `$` ,follow by
+variable castable to string. When using methods or accessing properties on an
+object the expression must be enclosed between curly brackets `${}`. There are
+a set of restricted characters in Strings that should be escaped using a `\`,
+see [Escape-sequences](#Escape-sequences).
 
-__EBNF Notation__
+### EBNF Notation
+
 ```ebnf
 escape = "\\" , "b" | "f" | "n" | "r" | "t" | "v" | "\\" | "'" ;
 name = "a".."z" | "A".."Z" , { "a".."z" | "A".."Z" | "0".."9" } ;
 template = "$" , name | ( "{" , expression, "}" ) ;
 string = "'" , { any_character | template | escape } , "'" ;
 ```
-<sub>`any_character` means all characters of the current character set **except** for backslash, singlequote and dollar sign.</sub>
 
-__Example__
+<sub>`any_character` means all characters of the current character set
+except for backslash, singlequote and dollar sign.</sub>
+
+### Example
+
 ```ttr
 'Hello, World!'
 
@@ -54,7 +69,7 @@ __Example__
 'Hello, ${[expression]}'
 ```
 
-<sub>* `[expression]` is a placeholder</sub>
+<sub>See [expression](expressions.md) for details about expressions.</sub>
 
 ### Escape sequences
 
