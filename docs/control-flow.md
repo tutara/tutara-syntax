@@ -97,7 +97,8 @@ infinitely unless a break condition is hit in the flow.
 The while loop takes an expression to be evaluated to a true or false condition
 an will execute the statements inside the body. As long as the condition in the
 while expression evaluates to true the loop will go on unless a break condition
-inside the loop is met.
+inside the loop is met. Skipping to the next iteration is done using the
+`continue` keyword.
 
 Lastly the for loop can perform a set of statements based on an expressing with
 the addition of adding an index within the loop to access.
@@ -108,6 +109,7 @@ the addition of adding an index within the loop to access.
 name = "a".."z" | "A".."Z" , { "a".."z" | "A".."Z" | "0".."9" } ;
 
 break = "break"
+continue = "continue"
 
 while = "while" , "(" , expression , ")" , "{" { statement } , "}" ;
 loop = "loop" , "{" { statement } , "}" ;
@@ -132,7 +134,12 @@ while (i < 10) {
 }
 
 // for
+var foo = 0
 for (j in 1..10) {
+  if (j == 5) {
+    continue
+  }
 
+  foo = foo + 1
 }
 ```
