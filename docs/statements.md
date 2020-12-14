@@ -74,7 +74,7 @@ val baz = 7 * 8
 <sub>See [variables](variables.md) for details about variables.</sub>  
 <sub>See [expression](expressions.md) for details about expressions.</sub>  
 
-## Type Specification
+## Type specification
 
 Used to specify the type of a function or variable. This is in some cases
 optional as the compiler tries to infer the type when possible. In some cases
