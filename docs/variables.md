@@ -1,6 +1,6 @@
 # Variables
 
-## val & var
+## Val & Var
 
 There are two types of variables: `val` and `var`. The latter is mutable and
 thus can be changes after assigning a value. The type of a variable will
