@@ -1,5 +1,6 @@
 # Sidebar order for markdown documents
 index.md
+program.md
 primitives.md
 variables.md
 operators.md
@@ -8,3 +9,4 @@ expressions.md
 statements.md
 control-flow.md
 functions.md
+modules.md
