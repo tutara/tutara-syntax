@@ -190,3 +190,33 @@ foo %= 3
 var bar = 3
 bar %= 2
 ```
+
+### And assign
+
+When using the 'and assign' operation you can perfrom an 'and condition' on a
+variable and another boolean value.
+
+#### Example
+
+```ttr
+var foo = true
+foo &= 1 == 1
+
+var bar = false
+bar &= 12 == 4
+```
+
+### Or assign
+
+When using the 'or assign' operation you can perfrom an 'or condition' on a
+variable and another boolean value.
+
+#### Example
+
+```ttr
+var foo = 2 == 4
+foo |= 2 == 2
+
+var bar = false
+bar |= 12 == 4
+```
