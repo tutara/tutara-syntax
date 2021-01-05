@@ -7,7 +7,7 @@ mandatory assignment to a variable.
 
 ```ebnf
 arithmetic_operator = "+" | "-" | "*" | "/" | "**" | "%" ;
-assignment_operator = "=" | "+=" | "-=" | "*=" | "/=" | "**=" | "%=" ;
+assignment_operator = "=" | "+=" | "-=" | "*=" | "/=" | "**=" | "%=" | "&=" | "|=" ;
 ```
 
 ## Arithmetic operators
