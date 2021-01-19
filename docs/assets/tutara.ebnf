@@ -1,0 +1,95 @@
+(* # Core *)
+
+name = "a".."z" | "A".."Z" , { "a".."z" | "A".."Z" | "0".."9" } ;
+
+(* # Primitives *)
+
+boolean = "true" | "false" ;
+integer = "0" | [ "-" ] , "1".."9" , { "0".."9" } ;
+
+escape = "\\" , "b" | "f" | "n" | "r" | "t" | "v" | "\\" | "'" ;
+template = "$" , name | ( "{" , expression, "}" ) ;
+string = "'" , { . | template | escape } , "'" ;
+
+(* # Operators *)
+
+operator = 
+    logic_operator |
+    comparison_operator |
+    arithmetic_operator |
+    assignment_operator
+;
+
+logic_operator = "!" | "&&" | "||" ;
+comparison_operator = "==" | "!=" | "<=" | ">=" | "<" | ">" ;
+arithmetic_operator = "+" | "-" | "*" | "/" | "**" | "%" ;
+assignment_operator = "=" | "+=" | "-=" | "*=" | "/=" | "**=" | "%=" | "&=" | "|=" ;
+
+(* # Expressions *)
+
+expression =
+    identifier_expression |
+    literal_expression |
+    binary_expression |
+    unary_expression |
+    grouping_expression |
+    assignment_expression |
+    get_expression |
+    call_expression 
+;
+
+identifier_expression = name ;
+literal_expression = boolean | integer | string ;
+binary_expression = expression , operator , expression ;
+unary_operator = "-" | "+" | "!" ;
+unary_expression = ( unary_operator ) , expression ;
+grouping_expression = "(" , expression , ")" ;
+assignment_expression = name , assignment_operator , expression ;
+get_expression = expression , [ "." , expression ] ;
+call_expression = expression , "(" , expression , ")" ;
+
+(* # Statements *)
+
+statement =
+    expression_statement |
+    declaration |
+    comment |
+    body |
+    function |
+    return | 
+    break |
+    continue |
+    loop | 
+    while |
+    for |
+    if  |
+    match 
+;
+
+expression_statement = expression ;
+
+declaration = "var" | "val" , ( [ ":" , name ] , expression | ":" , name , expression  ) ;
+
+comment = "//" , . ;
+
+body = "{" , { statement } , "}" ;
+function = "fun" , [ ":", name ] , name , [ "(" , [ name , ":" , name , "," ] , { name , ":" , name } ")" ] , "{" { statement } , "}" ;
+
+return = "return" , [ expression ] ;
+break = "break" ;
+continue = "continue" ;
+
+loop = "loop" , "{" { statement } , "}" ;
+while = "while" , "(" , expression , ")" , "{" { statement } , "}" ;
+for = "for" , "(" , name , "in" , expression , ")" , "{" { statement } , "}" ;
+
+if = "if" , "(" , expression , ")" , ( "{" , { statement } , "}" | expression ) ;
+else = "else" , ( "{" , { statement } , "}" | expression ) ;
+else_if = "else" , if ;
+if_statement = if , { else_if } , [ else ] ;
+
+match = "match" , [ "(" , expression , ")" ] , "{" , { ( expression | "else" ) , "->" , ( "{" , { statement } , "}" | expression ) } , "}" ;
+
+(* # Program *)
+
+program =  { statement } ;
